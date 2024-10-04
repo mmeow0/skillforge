@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getCourses, toggleSubscription } from "../../api/authApi";
+import { getCourses, toggleSubscription, deleteCourse } from "../../api/authApi";
 import { useNavigate } from "react-router-dom";
 import { AddCourseModal } from "../../components/AddCourseModal";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart, FaTrash } from "react-icons/fa";
 import { generatePastelColor } from "../../shared/ui/utils/generatePastelColor";
 
 type Course = {
@@ -46,18 +46,24 @@ export const CoursesPage: React.FC = () => {
   };
 
   const handleCourseAdded = () => {
-    // Перезагружаем список курсов после добавления нового курса
     fetchCourses();
   };
 
   const handleToggleSubscription = async (courseId: string) => {
     try {
       await toggleSubscription(courseId);
-      // Перезагружаем список курсов после успешного изменения подписки
-      const coursesData = await getCourses();
-      setCourses(coursesData);
+      fetchCourses();
     } catch (error) {
       console.error("Failed to toggle subscription", error);
+    }
+  };
+
+  const handleDeleteCourse = async (courseId: string) => {
+    try {
+      await deleteCourse(courseId);
+      fetchCourses();
+    } catch (error) {
+      console.error("Failed to delete course", error);
     }
   };
 
@@ -65,23 +71,23 @@ export const CoursesPage: React.FC = () => {
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-5xl font-bold text-gray-800 text-center mb-8">
-          IT Courses Nustet Courses
+          IT-наставничество.
         </h1>
         <div className="flex justify-center mb-6">
           <input
             type="text"
-            placeholder="Search courses..."
-            className="p-3 w-1/2 border border-gray-300 rounded-l-lg"
+            placeholder="Поиск курсов..."
+            className="p-3 w-1/2 shadow-lg rounded-l-lg focus:outline-none"
           />
-          <button className="bg-yellow-400 p-3 rounded-r-lg hover:bg-yellow-500">
-            Search
+          <button className="bg-indigo-200 p-3 rounded-r-lg shadow-lg hover:bg-indigo-400 transition-colors text-gray-700">
+            Найти
           </button>
         </div>
         <button
-          className="mb-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+          className="mb-6 bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600 transition-colors"
           onClick={handleAddCourseClick}
         >
-          Add New Course
+          Новый курс
         </button>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.length > 0 ? (
@@ -98,7 +104,7 @@ export const CoursesPage: React.FC = () => {
                     }
                   >
                     {course.is_subscribed ? (
-                      <FaHeart className="text-2xl text-red-500" />
+                      <FaHeart className="text-2xl text-indigo-500" />
                     ) : (
                       <FaRegHeart className="text-2xl text-gray-400" />
                     )}
@@ -121,6 +127,14 @@ export const CoursesPage: React.FC = () => {
                 <p className="text-gray-500">
                   <strong>Category:</strong> {course.category}
                 </p>
+                <div className="absolute bottom-4 right-4">
+                  <button
+                    onClick={() => handleDeleteCourse(course.id)}
+                    aria-label="Delete"
+                  >
+                    <FaTrash className="text-2xl text-gray-300 hover:text-gray-500 transition-colors" />
+                  </button>
+                </div>
               </div>
             ))
           ) : (

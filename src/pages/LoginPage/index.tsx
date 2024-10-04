@@ -36,7 +36,7 @@ export const LoginPage: React.FC = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 bg-white border border-blue-500 rounded-lg shadow-md mt-16 mb-16">
+      <div className="w-full max-w-md p-8 bg-white border border-indigo-500 rounded-lg shadow-md mt-16 mb-16">
         <h1 className="text-3xl font-bold text-center text-gray-800">Login</h1>
         <p className="mt-2 text-center text-gray-600">Please enter your credentials to log in.</p>
         <form className="mt-6 space-y-4" onSubmit={handleLogin}>
@@ -58,7 +58,7 @@ export const LoginPage: React.FC = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit" className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Login</button>
+          <button type="submit" className="w-full bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700">Login</button>
         </form>
       </div>
     </div>

@@ -4,7 +4,7 @@ export const generatePastelColor = (): string => {
     "#FFDFBA", // Pastel Orange
     "#FFFFBA", // Pastel Yellow
     "#BAFFC9", // Pastel Green
-    "#BAE1FF", // Pastel Blue
+    "#BAE1FF", // Pastel indigo
     "#D3BAFF", // Pastel Purple
     "#FFCBA4", // Pastel Peach
     "#E6E6FA", // Lavender

@@ -27,7 +27,7 @@ export const RegisterPage: React.FC = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 bg-white border border-blue-500 rounded-lg shadow-md mt-16 mb-16">
+      <div className="w-full max-w-md p-8 bg-white border border-indigo-500 rounded-lg shadow-md mt-16 mb-16">
         <h1 className="text-3xl font-bold text-center text-gray-800">
           Register
         </h1>
@@ -73,7 +73,7 @@ export const RegisterPage: React.FC = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+            className="w-full bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700"
           >
             Register
           </button>

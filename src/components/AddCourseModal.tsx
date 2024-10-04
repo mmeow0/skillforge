@@ -123,7 +123,7 @@ export const AddCourseModal: React.FC<AddCourseModalProps> = ({
           <div className="flex justify-end space-x-4">
             <button
               type="button"
-              className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+              className="bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700"
               onClick={handleAddCourse}
               disabled={loading}
             >

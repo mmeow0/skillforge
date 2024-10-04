@@ -51,7 +51,7 @@ export const UserProfilePage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      <div className="max-w-4xl mx-auto bg-white p-8 border border-blue-500 rounded-lg shadow-md">
+      <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
         <h1 className="text-4xl font-bold text-gray-800 mb-6">User Profile</h1>
         <div className="mb-6">
           <h2 className="text-2xl font-semibold text-gray-700">Name: {name}</h2>
@@ -81,7 +81,7 @@ export const UserProfilePage: React.FC = () => {
                     className={`${
                       course.is_subscribed
                         ? "bg-red-600 hover:bg-red-700"
-                        : "bg-blue-600 hover:bg-blue-700"
+                        : "bg-indigo-600 hover:bg-indigo-700"
                     } text-white py-2 px-4 rounded transition-colors duration-300`}
                   >
                     Unsubscribe

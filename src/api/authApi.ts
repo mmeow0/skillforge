@@ -101,3 +101,8 @@ export const toggleSubscription = async (courseId: string) => {
   });
   return response.data;
 };
+
+export const deleteCourse = async (courseId: string) => {
+  const response = await instance.delete(`/courses/${courseId}`);
+  return response.data;
+};
